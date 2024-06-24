@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record id="res_partner_inherit_form_view_medical_history" model="ir.ui.view">
+			<field name="name">res.partner.inherit.form.view.medical.history</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="hospital_mgmt.res_partner_aarogya_inherited_form_view_hospital"/>
+            <field name="arch" type="xml">
+                
+                <xpath expr="//label[@for='medical_history_ids']" position="replace">
+                    <label for="medical_historyy_ids" string="Medical History"/>
+                </xpath>         
+                <xpath expr="//field[@name='medical_history_ids']" position="replace">
+                    <field name="medical_historyy_ids" />
+                </xpath>         
+            </field>                   
+       </record>
+
+
+       <record id="inherit_res_partner_patient_kanban_view" model="ir.ui.view">
+        <field name="name">inherit.res.partner.patient.kanban.view</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.res_partner_kanban_view"/>
+        <field name="arch" type="xml">
+            <!-- <xpath expr="//li[field[@name='blood_group']]" position="replace">
+                <li attrs="{'invisible': [('contact_type', '!=', 'patient')]}">
+                    <label class="o_form_label fa fa-heart" style="font-weight: bold;" for="patient_group">&#160;Patient Group:&#160; </label>
+                    <field name="group_id"/>
+                </li>
+                </xpath> -->
+
+                <xpath expr="//label[@for='blood_group']" position="replace">
+                    <label class="o_form_label fa fa-heart" style="font-weight: bold;" for="group_id">&#160;Patient Group:&#160; </label>
+                </xpath>
+                <xpath expr="//field[@name='blood_group']" position="replace">
+                    <field name="group_id"/>
+                </xpath>
+
+        </field>
+    </record>
+</odoo>

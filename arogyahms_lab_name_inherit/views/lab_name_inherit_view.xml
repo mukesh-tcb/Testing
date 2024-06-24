@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="inherited_lab_name_form_view" model="ir.ui.view">
+        <field name="name">inherited.lab.name.form.view</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="sysadmin.product_template_only_form_view_inherit"/>
+        <field name="arch" type="xml">
+           <xpath expr="//field[@name='normal_range_details']" position = "after">
+               <field name="lab_name_ids" widget="many2many_tags"/>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="inherited_lab_name_tree_view" model="ir.ui.view">
+        <field name="name">inherited.lab.name.tree.view</field>
+        <field name="model">medical.lab.dep</field>
+        <field name="inherit_id" ref="hospital_mgmt.medical_lab_department_tree_view"/>
+        <field name="arch" type="xml">
+           <xpath expr="//field[@name='details']" position = "after">
+               <field name="tests_name" widget="many2many_tags"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- <record id="view_product_template_form_inherited" model="ir.ui.view">
+        <field name="name">product.template.form.inherited</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="sysadmin.product_template_kanban_view_add" />
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet" position="attributes">
+                <button name="add_lines" string="Lines" type="object" class="oe_highlight"
+                    attrs="{'invisible': ['|',('add_lines_bool', '=', True), ('check_bool', '=', True)]}"/>
+            </xpath>
+        </field>
+    </record> -->
+    <record id="price_inherited_product_template_kanban_view" model="ir.ui.view">
+        <field name="name">price.inherited.product.template.kanban.view</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="sysadmin.product_template_kanban_view_add"/>
+        <field name="arch" type="xml">
+            <!-- <xpath expr="//div[@name='product_lst_price']/field[@name='sell_price']" position="after">
+                <field name="check_bool"/>
+            </xpath> -->
+
+            <xpath expr="//div[@name='product_lst_price']/field[@name='sell_price']" position="replace">
+                <field name="standard_price" widget="monetary" options="{'currency_field': 'currency_id', 'field_digits': True}"/>
+            </xpath>
+
+            
+
+            <!-- <xpath expr="//button[@name='add_lines']" position="replace">
+                <button type="object" name="addd_lines" class="btn-primary"
+                        attrs="{'invisible': ['|','|',('add_lines_bool', '=', False),('check_bool', '=', True),('add_products_bool', '=', True)]}">
+                    Add
+                </button>
+            </xpath> -->
+
+
+
+            <!-- <xpath expr="//button[@name='add_liness']" position="replace">
+            <button type="object" name="addd_liness" class="btn-success"
+								    attrs="{'invisible': [('check_bool', '!=', True)]}">
+								    ADDED
+								</button>
+                            </xpath>
+                            </field>
+                        </record> -->
+                    <!-- '|',('add_products_bool', '=', False), -->
+                </field>
+                    </record>
+
+    <!-- <record id="remove_button_product_template_kanban_view" model="ir.ui.view">
+        <field name="name">remove.button.product.template.kanban.view</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_kanban_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='add_lines']" position="replace">
+
+            </xpath> -->
+            <!-- </field>
+            </record> -->
+            
+
+
+
+
+</odoo>

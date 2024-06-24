@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="patient_group_form_view_inherit" model="ir.ui.view">
+        <field name="name">patinet.group.form.view.inherit</field>
+        <field name="model">patient.group</field>
+        <field name="inherit_id" ref="hospital_mgmt.view_patient_group_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='old_dis_per']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='new_dis_per']" position="attributes">
+                <attribute name="string">Discount</attribute>
+            </xpath>
+        
+        </field>
+    </record>
+
+    <record id="patient_group_tree_view_inherit" model="ir.ui.view">
+        <field name="name">patinet.group.tree.view.inherit</field>
+        <field name="model">patient.group</field>
+        <field name="inherit_id" ref="hospital_mgmt.view_patient_group_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='old_dis_per']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='new_dis_per']" position="attributes">
+                <attribute name="string">Discount</attribute>
+            </xpath>
+        
+        </field>
+    </record>
+    </odoo>

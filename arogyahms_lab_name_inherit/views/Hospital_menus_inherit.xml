@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="sale.action_orders_to_invoice" model="ir.actions.act_window">
+        <field name="domain">[('invoice_status','=',('to invoice','invoiced','upselling','no')),('order_type_sel','=',('lab','xray','appointment','treatment','prescrition'))]</field>
+    </record>
+
+    <record id="hospital_mgmt.action_orders_to_lab_invoice" model="ir.actions.act_window">
+        <field name="domain">[('invoice_status','=',('to invoice','invoiced','upselling','no')),('order_type_sel','=','lab')]</field>
+    </record>
+
+    <record id="hospital_mgmt.action_orders_to_xray_invoice" model="ir.actions.act_window">
+
+        <field name="domain">[('invoice_status','=',('to invoice','invoiced','upselling','no')),('order_type_sel','=','xray')]</field>
+
+</record>
+
+
+
+<record id="hospital_mgmt.action_orders_to_ap_invoice" model="ir.actions.act_window">
+
+    <field name="domain">[('invoice_status','=',('to invoice','invoiced','upselling','no')),('order_type_sel','=','appointment')]</field>
+
+</record>
+
+<record id="hospital_mgmt.action_orders_to_treatment_invoice" model="ir.actions.act_window">
+
+    <field name="domain">[('invoice_status','=',('to invoice','invoiced','upselling','no')),('order_type_sel','=','treatment')]</field>
+
+</record>
+<record id="hospital_mgmt.action_orders_to_prescription_invoice" model="ir.actions.act_window">
+
+    <field name="domain">[('invoice_status','=',('to invoice','invoiced','upselling','no')),('order_type_sel','=','prescrition')]</field>
+
+</record>
+
+
+</odoo>
