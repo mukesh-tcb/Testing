@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="xray_size_master_form_view" model="ir.ui.view">
+        <field name="name">xray.size.master.form.view</field>
+        <field name="model">xray.size.master</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="details" />
+                        <!-- <field name="item_category_ids" widget="many2many_tags"/> -->
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="xray_size_master_tree_view" model="ir.ui.view">
+        <field name="name">xray.size.master.tree.view</field>
+        <field name="model">xray.size.master</field>
+        <field name="arch" type="xml">
+            <tree>
+            
+                        <field name="name" />
+                        <field name="details" />
+                        <!-- <field name="item_category_ids" widget="many2many_tags"/> -->
+
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="xray_size_master_view_action" model="ir.actions.act_window">
+        <field name="name">X-ray Size Master</field>
+        <field name="res_model">xray.size.master</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <menuitem id="xray_size_master_menu"
+        name="X-Ray Size Master"
+        action="xray_size_master_view_action"
+        parent="hospital_mgmt.main_menu_xray_group"
+        sequence="1" 
+        /> 
+       
+    <record id="xray_size_form_view_inherit" model="ir.ui.view">
+        <field name="name">xray.size.form.view.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="sysadmin.product_template_only_form_view_inherit" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='lab_name_ids']" position="after">
+                <field name="xray_size" attrs="{'invisible':[('lab_xray_bool','!=',True)]}" />             
+            </xpath>
+        </field>
+    </record>
+    
+
+    <record model="ir.actions.act_window" id="sysadmin.xray_test_items_action_hospital">
+        <field name="context">{'default_modules': 'hospital','default_lab_bool':True,'default_lab_xray_bool':True, 'default_sh_is_bundle':True}</field>
+    </record>
+
+    <!-- <record model="ir.actions.act_window" id="sysadmin.lab_test_category_items_action_hospital">
+        <field name="context">{'default_sh_item_category_ids': 'Lab Tests'}
+        </field>
+    </record> -->
+    <!-- <record model="ir.actions.act_window" id="sysadmin.lab_test_items_action_hospital">
+        <field name="context">{'default_modules': 'hospital','default_lab_treatment_bool':True,'default_ind_pro_bool':True}</field>
+        
+    </record> -->
+
+
+</odoo>

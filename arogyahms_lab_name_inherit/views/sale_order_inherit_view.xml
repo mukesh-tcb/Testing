@@ -1,0 +1,48 @@
+<odoo>
+    <record id="sale_order_hide_inherit_form_view" model="ir.ui.view">
+        <field name="name">sale.order.hide.inherit.form.view</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="hospital_mgmt.sale_order_form_inherit_fleet_worksheet" />
+        <field name="arch" type="xml">
+            <!-- <xpath expr="//field[@name='product_id']" position="attributes">
+                <attribute name="optional">show</attribute>
+            </xpath> -->
+            <xpath expr="//field[@name='product_template_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="sale_order_show_inherit_form_view" model="ir.ui.view">
+        <field name="name">sale.order.show.inherit.form.view</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']/tree/field[@name='product_id']" position="attributes">
+                <attribute name="invisible">0</attribute>
+                <attribute name="optional">show</attribute>
+            </xpath>
+
+            <!-- <xpath expr="//form/sheet/notebook/page[@name='order_lines']//tree/field[@name='product_template_id']"
+                position="attributes">
+                <attribute name="invisible">0</attribute> -->
+                <!-- <attribute name="optional">show</attribute>
+                <attribute
+                name="attrs">{'invisible':[('hospital_bool','=',True)]}</attribute> -->
+            <!-- </xpath> -->
+            
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="hospital_mgmt.action_orders_to_ap_invoice">
+        <field name="context">
+            {
+            'default_product_id': '	Appointment Fee',
+            
+            }
+        </field>
+    </record>
+
+
+</odoo>
+                                
